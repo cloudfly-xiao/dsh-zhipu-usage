@@ -1,0 +1,41 @@
+{
+  "name": "dsh-zhipu-usage",
+  "version": "0.1.0",
+  "description": "DSH Web GUI plugin: Zhipu GLM Coding Plan usage stats (sidebar entry above the workspace section), aggregated from local DSH session logs",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./package.json": "./package.json",
+    "./index.js": "./index.js",
+    "./lib/index.js": "./lib/index.js"
+  },
+  "files": [
+    "lib",
+    "tests",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "keywords": [
+    "dsh",
+    "deepseek-harness",
+    "plugin",
+    "zhipu",
+    "glm",
+    "coding-plan",
+    "usage",
+    "tokens"
+  ],
+  "license": "MIT",
+  "dsh": {
+    "client": {
+      "platform": "web"
+    }
+  },
+  "dependencies": {
+    "fzstd": "^0.1.1",
+    "jsdom": "^29.1.1"
+  }
+}

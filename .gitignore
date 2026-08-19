@@ -1,0 +1,5 @@
+node_modules/
+*.log
+*.bak*
+lib/index-v[0-9]*.js
+lib/scan-v[0-9]*.mjs
