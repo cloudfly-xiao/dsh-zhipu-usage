@@ -1,6 +1,6 @@
 {
   "name": "dsh-zhipu-usage",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "DSH Web GUI plugin: Zhipu GLM Coding Plan usage stats (sidebar entry), sourced from official Zhipu APIs (API-key quota + console token)",
   "type": "module",
   "main": "lib/index.js",
