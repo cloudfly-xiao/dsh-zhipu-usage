@@ -1,5 +1,25 @@
 # Changelog
 
+## 0.2.1 (2026-08-19)
+
+- 修复 P0：补上 0.2.0 重构中丢失的 themeColors()（此前「更新令牌」按钮 100% 报错、
+  绑定成功后趋势图/模型表渲染抛 ReferenceError）。
+- 系统提示词 GUIDANCE 改为真实口径（官方 API 双通道、胶囊=5h 窗口百分比），
+  不再宣称本地会话日志统计。
+- 安全收紧：loopback 围栏改为 socket+Host+sec-fetch-site 三重 AND（封堵 DNS
+  rebinding 与本机浏览器 CSRF）；删除实验性控制台反向代理、迷你登录、capture、
+  probe 端点组与 /api/api 全局前缀路由（粘贴令牌是唯一绑定路径）。
+- 稳定性：account 报表请求补 8s 超时（原先可无限挂起）；quota/console 错误缓存
+  从 5 分钟降为 30 秒；console 用量改用 allSettled，单区间失败不再清空整个报表；
+  logout 同步清空用量缓存。
+- 客户端：state 路径 r2→r1 回退探测（对热更新泄漏实例更耐受）；图表 tooltip
+  bubble 不再随每次轮询泄漏 DOM；未配置 API key / 区间获取失败时给出明确文案；
+  auth 按钮显示绑定状态提示；清理 0.2.0 重构遗留的重复代码。
+- 工程化：jsdom 移到 devDependencies；版本号对齐 CHANGELOG；git 化（基线
+  147e417）并清理 index-v34/v35、client-old 死文件。
+- 注意：profile 的 node_modules/dsh-zhipu-usage 是指向本目录的符号链接；未来
+  任何 npm install 都可能把它铺成实体副本，装完需检查恢复该链接。
+
 ## 0.2.0 (2026-08-19)
 
 - 用量趋势时间选择器扩展为五档：今日/昨日/近7天/近30天/本月（对齐官方控制台口径），

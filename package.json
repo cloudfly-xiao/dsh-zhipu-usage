@@ -1,7 +1,7 @@
 {
   "name": "dsh-zhipu-usage",
-  "version": "0.1.0",
-  "description": "DSH Web GUI plugin: Zhipu GLM Coding Plan usage stats (sidebar entry above the workspace section), aggregated from local DSH session logs",
+  "version": "0.2.1",
+  "description": "DSH Web GUI plugin: Zhipu GLM Coding Plan usage stats (sidebar entry), sourced from official Zhipu APIs (API-key quota + console token)",
   "type": "module",
   "main": "lib/index.js",
   "exports": {
@@ -35,7 +35,9 @@
     }
   },
   "dependencies": {
-    "fzstd": "^0.1.1",
+    "fzstd": "^0.1.1"
+  },
+  "devDependencies": {
     "jsdom": "^29.1.1"
   }
 }
