@@ -103,9 +103,23 @@ check('model table rows rendered', () => {
   const rows = [...document.querySelectorAll('.dsh-zpu-table tbody tr')]
   if (rows.length !== 2) throw new Error('rows=' + rows.length)
 })
-check('range select exists with five options', () => {
-  const opts = document.querySelectorAll('.dsh-zpu-select option')
-  if (opts.length !== 5) throw new Error('opts=' + opts.length)
+check('range segmented control has five buttons', () => {
+  const btns = document.querySelectorAll('.dsh-zpu-segBtn')
+  if (btns.length !== 5) throw new Error('btns=' + btns.length)
+  const activeCount = document.querySelectorAll('.dsh-zpu-segBtn[data-active]').length
+  if (activeCount !== 1) throw new Error('active count=' + activeCount)
+})
+check('switching to 昨日 clears card highlight (sync guard)', () => {
+  const yday = [...document.querySelectorAll('.dsh-zpu-segBtn')].find((b) => b.textContent === '昨日')
+  yday.click()
+  if (document.querySelector('.dsh-zpu-card[data-active]') !== null) throw new Error('card still active')
+  const active = [...document.querySelectorAll('.dsh-zpu-segBtn[data-active]')].map((b) => b.textContent)
+  if (active.join(',') !== '昨日') throw new Error('seg active=' + active)
+})
+check('switch back to 今日 restores card highlight', () => {
+  const today = [...document.querySelectorAll('.dsh-zpu-segBtn')].find((b) => b.textContent === '今日')
+  today.click()
+  if (document.querySelector('.dsh-zpu-card[data-active]') === null) throw new Error('today card not active')
 })
 
 // --- token dialog: the other 0.2.0 crash path ---------------------------------
