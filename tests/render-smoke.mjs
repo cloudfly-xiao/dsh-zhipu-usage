@@ -54,7 +54,8 @@ dom.window.matchMedia = dom.window.matchMedia || ((q) => ({ matches: false, addE
 global.matchMedia = dom.window.matchMedia
 
 const failures = []
-const check = (name, fn) => { try { fn() } catch (e) { failures.push(name + ': ' + e.message) } }
+let checkCount = 0
+const check = (name, fn) => { checkCount += 1; try { fn() } catch (e) { failures.push(name + ': ' + e.message) } }
 const wait = (ms) => new Promise((r) => setTimeout(r, ms))
 
 new Function(src)()
@@ -170,4 +171,4 @@ if (failures.length > 0) {
   console.error('FAILURES:\n  ' + failures.join('\n  '))
   process.exit(1)
 }
-console.log('render smoke: all ' + 20 + ' checks passed')
+console.log('render smoke: all ' + checkCount + ' checks passed')
